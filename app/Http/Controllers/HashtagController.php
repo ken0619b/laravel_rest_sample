@@ -14,7 +14,11 @@ class HashtagController extends Controller
      */
     public function index()
     {
-      return response(Hashtag::all());
+      //return response(Hashtag::all());
+      return response()->json([
+        'success'=>true,
+        'data'=>Hashtag::all()
+      ]);
     }
 
     /**
