@@ -17,7 +17,7 @@ class VoiceController extends Controller
       //return response(Voice::all());
       return response()->json([
         'success'=>true,
-        'data'=>Voice::all()
+        'data'=>Voice::where('tag_id', 1)->get()
       ]);
     }
 
@@ -32,7 +32,17 @@ class VoiceController extends Controller
       // POST
       if ($request->isMethod('POST')) {
         // 保存
-        $voice = Voice::create(['tag_id'=> 1, 'type'=> 'picture', 'content'=> 'sample']);
+        $content = $request->content;
+        $voice = Voice::create(['tag_id'=>1, 'type'=>'comment', 'content' => $content, 'path'=>'-']);
+
+        //foreach ($request->file('files') as $index=> $e) {
+        // $file = $request->file('photo');
+        //   $ext = $file->guessExtension();
+        //   $filename = "{'sample'}.{$ext}";
+        //   $path = $file->storeAs('photos', $filename);
+        // photosメソッドにより、商品に紐付けられた画像を保存する
+        //$item->photos()->create(['path'=> $path]);
+        //}
       }
     }
 
