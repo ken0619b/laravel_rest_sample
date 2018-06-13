@@ -16,14 +16,10 @@ class CreateVoicesTable extends Migration
         Schema::create('voices', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('tag_id');
-            $table->unsignedInteger('user_id');
             $table->string('type');
             $table->string('content');
+            $table->string('path');
             $table->timestamps();
-
-            $table->foreign('user_id')
-                  ->references('id')
-                  ->on('users');
 
             $table->foreign('tag_id')
                   ->references('id')

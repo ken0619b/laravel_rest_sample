@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Hashtag;
+use App\Voice;
 
-class HashtagController extends Controller
+class VoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,10 @@ class HashtagController extends Controller
      */
     public function index()
     {
-      //return response(Hashtag::all());
+      //return response(Voice::all());
       return response()->json([
         'success'=>true,
-        'data'=>Hashtag::all()
+        'data'=>Voice::all()
       ]);
     }
 
@@ -29,7 +29,11 @@ class HashtagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      // POST
+      if ($request->isMethod('POST')) {
+        // 保存
+        $voice = Voice::create(['tag_id'=> 1, 'type'=> 'picture', 'content'=> 'sample']);
+      }
     }
 
     /**

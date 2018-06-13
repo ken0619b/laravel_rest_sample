@@ -17,4 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('hashtag', 'HashtagController');
+Route::resource('hashtag', 'HashtagController', [ 'except' => ['create', 'edit'] ]);
+
+Route::resource('voice', 'VoiceController', [ 'except' => ['create', 'edit'] ]);
