@@ -31,7 +31,7 @@ class VoiceController extends Controller
     {
       // POST
       if ($request->isMethod('POST')) {
-        // 保存
+        // 保存 暫定でcontentだけ取らせる
         $content = $request->content;
         $voice = Voice::create(['tag_id'=>1, 'type'=>'comment', 'content' => $content, 'path'=>'-']);
 
